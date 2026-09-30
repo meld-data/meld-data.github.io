@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -96,7 +96,7 @@
   .nav-links a.navlink:hover{color:var(--text)}
   .nav-links a.navlink::after{content:"";position:absolute;left:0;bottom:-6px;height:2px;width:0;background:var(--accent);transition:width .25s}
   .nav-links a.navlink:hover::after{width:100%}
-  @media (max-width:720px){.nav-desktop{display:none}}
+  @media (max-width:720px){.nav-desktop{display:none !important}}
   .nav-cta{padding:.5rem 1rem;border-radius:9px;background:var(--accent);color:var(--accent-contrast);font-weight:600;font-size:.88rem;box-shadow:var(--glow)}
   .nav-cta:hover{background:var(--accent-bright)}
   .theme-btn{display:grid;place-items:center;width:34px;height:34px;border-radius:9px;border:1px solid var(--border-strong);background:var(--surface-2);cursor:pointer;color:var(--text);transition:border-color .2s}
@@ -169,18 +169,11 @@
   @media (max-width:860px){.arch-flow{flex-direction:column;min-width:0}.arch-flow::before{display:none}.arch-arrow{width:100%;height:28px}.arch-arrow svg{transform:rotate(90deg)}.arch-diagram{overflow-x:visible}}
   @media (prefers-reduced-motion:reduce){.arch-flow::before{animation:none}.arch-stage{transition:none}.arch-stage:hover{transform:none}}
 
-  /* ============ TEAM ============ */
-  .team-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;margin-top:2.6rem}
-  @media (max-width:720px){.team-grid{grid-template-columns:1fr}}
-  .member{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.5rem 1.5rem;display:flex;gap:1.1rem;transition:transform .2s,border-color .2s,box-shadow .2s}
-  .member:hover{transform:translateY(-3px);border-color:var(--border-strong);box-shadow:var(--shadow)}
-  .avatar{width:56px;height:56px;flex-shrink:0;border-radius:14px;display:grid;place-items:center;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:1.1rem;color:#fff;letter-spacing:-.02em}
-  .member-body{min-width:0}
-  .member h3{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:1.18rem;letter-spacing:-.01em}
-  .member .role{color:var(--accent);font-weight:600;font-size:.9rem;margin-top:.1rem}
-  .member .bio{color:var(--muted);font-size:.92rem;line-height:1.55;margin-top:.55rem}
-  .member .skills{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.8rem}
-  .member .skills span{font-family:"IBM Plex Mono",monospace;font-size:.66rem;color:var(--faint);background:var(--surface-2);border:1px solid var(--border);border-radius:6px;padding:.18rem .45rem}
+  /* ============ TEAM / ROLE CLOUD ============ */
+  .role-cloud{margin-top:2.6rem;padding:2rem clamp(1.25rem,4vw,2.5rem);background:var(--surface);border:1px solid var(--border);border-radius:18px}
+  .role-cloud-boxes{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center}
+  .title-box{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:clamp(.88rem,1.6vw,1.02rem);letter-spacing:-.01em;color:var(--accent);background:var(--accent-soft);border:1px solid var(--accent-line);border-radius:9px;padding:.55rem .95rem;line-height:1.2;white-space:nowrap;transition:transform .15s,border-color .15s}
+  .title-box:hover{transform:translateY(-2px);border-color:var(--accent)}
 
   /* ============ STACK ============ */
   .stack-groups{display:flex;flex-direction:column;gap:2.2rem;margin-top:2.6rem}
@@ -442,51 +435,23 @@
     <div class="wrap">
       <div class="reveal">
         <span class="eyebrow">The Team</span>
-        <h2 class="section-h">A cohesive team that has built and run this in production.</h2>
-        <p class="section-lede">Not a loose collective of freelancers. A senior data-engineering collective that designs, secures, and operates enterprise data platforms together, with the depth to lead strategy and the hands to build it.</p>
+        <h2 class="section-h">A collective built from decades of hands-on titles.</h2>
+        <p class="section-lede">Not a loose collective of freelancers. A senior data-engineering collective that designs, secures, and operates enterprise data platforms together, with the depth to lead strategy and the hands to build it. Every title below is a role someone on this team has actually held.</p>
       </div>
-      <div class="team-grid">
-
-        <article class="member reveal">
-          <div class="avatar" style="background:linear-gradient(135deg,var(--accent),var(--accent-bright))" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
-          <div class="member-body">
-            <h3>Solutions Architect</h3>
-            <div class="role">Principal · 20+ years</div>
-            <p class="bio">Two decades leading enterprise data strategy, governance, and platform architecture across healthcare, financial services, and SaaS, standing up data functions and PHI governance programs on Snowflake and Cortex AI from the ground up.</p>
-            <div class="skills"><span>Data Strategy</span><span>Snowflake</span><span>Governance/HIPAA</span><span>AI/LLM</span><span>Leadership</span></div>
-          </div>
-        </article>
-
-        <article class="member reveal">
-          <div class="avatar" style="background:linear-gradient(135deg,var(--flow),color-mix(in srgb,var(--flow) 55%,var(--accent)))" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.5 8.5 8 11 4.5-2.5 8-6 8-11V5l-8-3z"/><path d="M9 12l2 2 4-4"/></svg></div>
-          <div class="member-body">
-            <h3>Database Administrator</h3>
-            <div class="role">Senior · 10+ years</div>
-            <p class="bio">A decade building multi-client healthcare data platforms: config-driven Snowflake architecture, least-privilege RBAC for HIPAA compliance audits, secure file exchange (PGP, chrooted SFTP), and schemachange-based CI/CD across environments.</p>
-            <div class="skills"><span>Snowflake</span><span>HIPAA/Security</span><span>Data Quality</span><span>CI/CD</span><span>Config-driven</span></div>
-          </div>
-        </article>
-
-        <article class="member reveal">
-          <div class="avatar" style="background:linear-gradient(135deg,var(--accent-bright),var(--flow))" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19a4.5 4.5 0 0 0 .5-9 6 6 0 0 0-11.6-1.5A4 4 0 0 0 6 19z"/></svg></div>
-          <div class="member-body">
-            <h3>Automation Engineer</h3>
-            <div class="role">Senior · Consulting</div>
-            <p class="bio">Snowflake &amp; SQL subject-matter expert building cost-effective, scalable pipelines on AWS with Terraform, real-time streaming, and high-availability disaster recovery, across AWS, Azure, and GCP.</p>
-            <div class="skills"><span>AWS + Terraform</span><span>Multi-cloud</span><span>Streaming</span><span>SQL/Snowflake</span><span>HA/DR</span></div>
-          </div>
-        </article>
-
-        <article class="member reveal">
-          <div class="avatar" style="background:linear-gradient(135deg,color-mix(in srgb,var(--accent) 60%,var(--flow)),var(--accent))" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg></div>
-          <div class="member-body">
-            <h3>Data Engineer</h3>
-            <div class="role">AWS Certified</div>
-            <p class="bio">Builds AWS event-driven pipelines and AI-assisted Snowflake tooling that fail loud, not silent: from tiered EventBridge routing to guardrailed, reversible data operations.</p>
-            <div class="skills"><span>AWS Pipelines</span><span>Automation</span><span>Python</span><span>Snowflake/Streamlit</span><span>Reliability</span></div>
-          </div>
-        </article>
-
+      <div class="role-cloud reveal">
+        <div class="role-cloud-boxes">
+          <span class="title-box">Senior Director, Data</span>
+          <span class="title-box">Vice President, Data &amp; BI Solutions</span>
+          <span class="title-box">Solutions Architect</span>
+          <span class="title-box">Director, Analytics</span>
+          <span class="title-box">Senior Consultant</span>
+          <span class="title-box">Data Engineer</span>
+          <span class="title-box">Lead Developer</span>
+          <span class="title-box">Database Administrator</span>
+          <span class="title-box">SQL Developer</span>
+          <span class="title-box">IT Manager</span>
+          <span class="title-box">Business Systems Analyst</span>
+        </div>
       </div>
     </div>
   </section>
@@ -605,7 +570,7 @@
   (function(){
     var root=document.documentElement, KEY="meld-theme";
     try{var s=localStorage.getItem(KEY);if(s)root.setAttribute("data-theme",s);}catch(e){}
-    function cur(){var x=root.getAttribute("data-theme");if(x)return x;return window.matchMedia&&window.matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light";}
+    function cur(){return root.getAttribute("data-theme")==="light"?"light":"dark";}
     function tog(){var n=cur()==="dark"?"light":"dark";root.setAttribute("data-theme",n);try{localStorage.setItem(KEY,n);}catch(e){}}
     var b=document.getElementById("themeToggle");
     b.addEventListener("click",tog);
